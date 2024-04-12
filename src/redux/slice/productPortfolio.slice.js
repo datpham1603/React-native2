@@ -7,8 +7,8 @@ export const fetchSubcate = createAsyncThunk(
     'category/fetchsubcate',
     async (categoryId, thunkApi) => {
         try {
-            const response = await axios.get(`http://192.168.18.105:3000/v1/getsubcategory?parent_id=${categoryId}`)
-            return response.data
+            const response = await axios.get(`http://192.168.18.105/v1/getsubcategory?parent_id=${categoryId}`)
+            return response.data;
         } catch (error) {
             console.log(err)
             throw error;
@@ -37,7 +37,7 @@ const productPortfolioSlice = createSlice({
         });
         builder.addCase(fetchSubcate.rejected, (state, action) => {
             state.loading = false;
-            state.error = action.error.message;
+            state.error = action.error;
         });
 
     }
